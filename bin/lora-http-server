@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+const config = require('../config');
+const Log = require('../lib/lora-lib/log');
+const dbClient = require('../lib/lora-lib').dbClient;
+const MQClient = require('../lib/lora-lib').MQClient;
+const DbModels = require('../models');
+const HttpServer = require('../lib/httpServer');
+const log = new Log(config.log);
+const mqClient = new MQClient(config.mqClient_ns, log);
+const dbModels = new DbModels(dbClient);
+const httpServer = new HttpServer(dbModels, log, mqClient);
+mqClient.connect();
+httpServer.bind(config);
+console.log(`http-server is listening on port: ${config.http.port}`);

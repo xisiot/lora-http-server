@@ -1,0 +1,72 @@
+{
+  "name": "lora-http-server",
+  "version": "1.0.0",
+  "description": "LoRa Http Server. provide http apis for web.",
+  "main": "./bin/lora-http-server",
+  "scripts": {
+    "buildTables": "node models/BuildTables.js",
+    "test": "mocha --recursive",
+    "lint": "files=$(git diff --cached --name-only --diff-filter=ACM | grep '\\.js$'); jshint $files && jscs $files"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:xisiot/lora-network-server"
+  },
+  "keywords": [
+    "lora"
+  ],
+  "author": "xisiot Co., Ltd.",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-json-schema-ajv": "^1.0.0",
+    "jscs": "^3.0.7",
+    "jshint": "^2.9.5",
+    "mocha": "^4.0.1",
+    "pre-commit": "^1.2.2"
+  },
+  "dependencies": {
+    "ajv": "^6.5.2",
+    "bluebird": "^3.5.1",
+    "fs": "0.0.1-security",
+    "ioredis": "^2.5.0",
+    "kafka-node": "^2.3.0",
+    "koa": "^2.5.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-cors": "0.0.16",
+    "koa-morgan": "^1.0.1",
+    "koa-route": "^3.2.0",
+    "koa-static": "^5.0.0",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.2.3",
+    "mysql2": "^1.5.1",
+    "nodemon": "^1.19.2",
+    "protobufjs": "^6.8.0",
+    "sequelize": "^4.22.6",
+    "validatorjs": "^3.17.1",
+    "winston": "^3.0.0-rc3"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "apidoc": {
+    "name": "lora-httpServer-apis",
+    "url": "http://10.3.242.235:3005",
+    "header": {
+      "title": "Document",
+      "filename": "public/apidoc_header.md"
+    },
+    "order": [
+      "User",
+      "Login",
+      "Application",
+      "Device",
+      "Gateway"
+    ],
+    "template": {
+      "forceLanguage": "en",
+      "withCompare": true,
+      "withGenerator": true
+    }
+  }
+}

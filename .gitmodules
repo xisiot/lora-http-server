@@ -1,0 +1,3 @@
+[submodule "lib/lora-lib"]
+	path = lib/lora-lib
+	url = git@10.3.200.104:lora-lib
