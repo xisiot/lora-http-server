@@ -54,7 +54,7 @@
     "url": "",
     "header": {
       "title": "Document",
-      "filename": "public/apidoc_header.md"
+      "filename": "apidoc_header.md"
     },
     "order": [
       "User",
