@@ -32,7 +32,8 @@ function DbModels(dbClient) {
     _this.mysqlConn[model] = new MySQLModels[model](_this._sequelize);
   }
 
-  _this.mongodb = _this.mysqlConn.AppInfo.readItems().then(data => {
+  //mongodb创建时要读取所有的AppEUI和集合建立连接
+  _this.createDB = () => _this.mysqlConn.AppInfo.readItems().then(data => {
     let len = data.rows.length;
     for (let i = 0; i < len; i++) {
       let AppEUI = data.rows[i].dataValues.AppEUI;
@@ -40,29 +41,6 @@ function DbModels(dbClient) {
     }
     return _this.mongoConn;
   });
-  // console.log(_this.mongoConn);
-  // _this.mongoConn[AppEUI].find().then((data) => {
-  //   console.log(data);
-  // })
-  // const saveObj = {
-  //   "DevAddr": "001103e5",
-  //   "operation": "Update",
-  //   "payload": {
-  //     "state": {
-  //       "reported": {
-  //         "data": {
-  //           "CH4": 0,
-  //           "temperature": 26,
-  //           "humidity": 56,
-  //           "battery": 91,
-  //           "waterlevel": 0
-  //         }
-  //       }
-  //     }
-  //   },
-  //   "timestamp":1567647118
-  // };
-  // _this.mongoConn[AppEUI].create(saveObj);
 
   /* create association between entities */
   let modelIns = this.mysqlConn;
