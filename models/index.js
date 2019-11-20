@@ -98,6 +98,13 @@ function DbModels(dbClient) {
     }
   );
 
+  modelIns.App2PB._model.belongsTo(
+    modelIns.DeviceInfo._model, {
+      foreignKey: 'AppEUI',
+      onDelete: 'CASCADE',
+    }
+  );
+
   this.mysqlConn.getTxpkInfo = function(devaddr) {
     return modelIns.DeviceRouting.getTxpkInfo(devaddr, modelIns.DeviceInfo, modelIns.DeviceConfig);
   };

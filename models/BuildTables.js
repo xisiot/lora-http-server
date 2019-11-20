@@ -64,6 +64,13 @@ modelIns.DeviceConfig._model.belongsTo(
   }
 );
 
+modelIns.App2PB._model.belongsTo(
+  modelIns.DeviceInfo._model, {
+    foreignKey: 'AppEUI',
+    onDelete: 'CASCADE',
+  }
+);
+
 _sequelize.sync({ force: true }).then(function () {
   console.log('Successfully building the Tables in mysql Database');
   _sequelize.close();
